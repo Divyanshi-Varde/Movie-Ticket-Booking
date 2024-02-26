@@ -1,0 +1,321 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.signupOne_wrapper {
+  height: 664px;
+  width: 1422px;
+  background-image: url("./Images/signup-1.png");
+  display: flex;
+  flex-direction: row;
+  gap: 500px;
+}
+
+.return_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+  padding-top: 35px;
+  padding-left: 40px;
+}
+
+.return_button_text {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-color: none;
+}
+
+.icon_arrow {
+  color: white;
+}
+
+.signupOne_container {
+  margin-top: 35px;
+  width: 640px;
+  height: 590px;
+  background-color: white;
+}
+
+.signupOne_heading {
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  color: #000;
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+.signupOne_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding-left: 40px;
+  padding-top: 40px;
+  width: 423px;
+}
+
+.fname_label {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.fname_input {
+  width: 423px;
+  height: 41px;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #9da8be;
+  border-bottom: 1px solid #9da8be;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.phone_label {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.phone_input {
+  width: 423px;
+  height: 41px;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #9da8be;
+  border-bottom: 1px solid #9da8be;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  position: relative;
+}
+
+.eye_icon {
+  position: absolute;
+  left: 1098px;
+  top: 277px;
+  color: #9da8be;
+}
+
+.continue_button {
+  width: 423px;
+  height: 48px;
+  background-color: #1a2c50;
+  color: white;
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.continue_button:hover {
+  width: 423px;
+  height: 48px;
+  background-color: white;
+  color: #1a2c50;
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.form_text {
+  color: #5a637a;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.last_para {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  padding-left: 40px;
+  margin-top: 10rem;
+}
+
+/* ............................................................................... */
+
+.signupTwo_wrapper {
+  height: 664px;
+  width: 1422px;
+  background-image: url("./Images/signup-2.png");
+  display: flex;
+  flex-direction: row;
+  gap: 500px;
+}
+
+.return_text2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+  padding-top: 35px;
+  padding-left: 40px;
+}
+
+.return2 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-color: none;
+}
+
+.icon2 {
+  color: white;
+}
+
+.signupTwo_container {
+  margin-top: 35px;
+  width: 640px;
+  height: 590px;
+  background-color: white;
+}
+
+.signupTwo_heading {
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  color: #000;
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+.signupTwo_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding-left: 40px;
+  padding-top: 40px;
+  width: 423px;
+}
+
+.email_label {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.email_input {
+  width: 423px;
+  height: 41px;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #9da8be;
+  border-bottom: 1px solid #9da8be;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.password_label {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.password_input {
+  width: 423px;
+  height: 41px;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #9da8be;
+  border-bottom: 1px solid #9da8be;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  position: relative;
+}
+
+.eye_icon {
+  position: absolute;
+  left: 1098px;
+  top: 277px;
+  color: #9da8be;
+}
+
+.signup_button1 button {
+  width: 423px;
+  height: 48px;
+  background-color: #1a2c50;
+  color: white;
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.signup_button1 button:hover {
+  width: 423px;
+  height: 48px;
+  background-color: white;
+  color: #1a2c50;
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.last_text2 {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  padding-left: 40px;
+  margin-top: 0.5rem;
+}
+
+.last_text3 {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  padding-left: 40px;
+  margin-top: 10rem;
+}

@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1440px;
+}
+
+.navbar {
+  height: 80px;
+  padding: 8px 72px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  width: 105px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left img {
+  height: 37px;
+  width: 65px;
+}
+
+.navbar-right {
+  width: 751px;
+  height: 48px;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 21px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vertical_line {
+  color: #9da8be;
+}
+
+.logging_in_button {
+  width: 101px;
+  height: 48px;
+
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 21px;
+  background-color: #1a2c50;
+  color: #f2c46f;
+  border-radius: 5px;
+}
+
+.signin_button {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 21px;
+  color: #333;
+  background-color: white;
+  border: none;
+}
+
+.navbar-button {
+  text-decoration: none;
+}
+.user-logo {
+  width: 40px;
+  height: 40px;
+  color: white;
+  border-radius: 50%;
+  background-image: linear-gradient(#f2c46f, #c6943f);
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+  .container {
+    width: 100%;
+    padding: 8px;
+  }
+  .navbar {
+    padding: 8px 40px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    padding: 8px;
+  }
+  .navbar {
+    padding: 8px 32px;
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 8px;
+  }
+  .navbar {
+    padding: 8px 16px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .container {
+    padding: 8px;
+  }
+  .navbar {
+    padding: 8px;
+  }
+  .navbar-right {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .bell,
+  .news {
+    display: none;
+  }
+}

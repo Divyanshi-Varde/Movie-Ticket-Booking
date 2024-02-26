@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hero-section {
+  width: 1200px;
+  height: 856px;
+  margin-left: 111px;
+  margin-top: 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+.hero-section-pictures {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.hero-section-image img {
+  height: 707px;
+  width: 500px;
+  border-radius: 15px;
+}
+
+.hero-section-text {
+  width: 500px;
+  height: 42px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  margin-top: 30px;
+  font-size: xx-large;
+  font-weight: 700;
+}
+
+.hero-section-badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.badge {
+  color: white;
+  text-align: center;
+  padding: 4px 4px;
+  font-size: smaller;
+  border-radius: 3px;
+}
+
+.one {
+  background-image: linear-gradient(#f2c46f, #c6943f);
+}
+
+.two {
+  background-color: #ec1e2b;
+}
+
+.three {
+  background-color: #000e62;
+  text-transform: uppercase;
+}
+
+.slider {
+  background-color: white;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: rgb(179, 175, 175) 0.5px solid;
+}
+
+.slider:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

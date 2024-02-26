@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.carousel {
+  width: 1296px;
+  height: 304px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 3rem auto;
+}
+
+.carousel_buttons.left {
+  position: absolute;
+  left: -30px;
+}
+
+.carousel_buttons.right {
+  position: absolute;
+  left: 1260px;
+}
+
+.slider {
+  background-color: white;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: rgb(179, 175, 175) 0.5px solid;
+}
+
+.slider:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

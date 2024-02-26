@@ -1,0 +1,106 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.comingSoon {
+  width: 1297px;
+  height: 600px;
+  margin: 10rem auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.see_all_button pre {
+  color: #118eea;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+}
+
+.see_all_button button {
+  border: none;
+}
+
+.comingSoon_text {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 930px;
+}
+
+.heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  margin-top: 3rem;
+}
+
+.paragraph pre {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  line-height: 24px;
+  margin-top: 9px;
+}
+
+.comingSoon_movies {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0.2rem;
+}
+
+.comingSoon_image img {
+  height: 507px;
+  width: 359px;
+  border-radius: 15px;
+}
+
+.comingSoon_text {
+  width: 300px;
+  height: 32px;
+  font-family: "Roboto", sans-serif;
+  margin-top: 30px;
+  font-size: large;
+  font-weight: 500;
+  text-align: start;
+}
+
+.comingSoon_badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.badge {
+  color: white;
+  text-align: center;
+  padding: 4px 4px;
+  font-size: smaller;
+  border-radius: 3px;
+}
+
+.one {
+  background-image: linear-gradient(#f2c46f, #c6943f);
+}
+
+.two {
+  background-color: #ec1e2b;
+}
+
+.three {
+  background-color: #000e62;
+  text-transform: uppercase;
+}

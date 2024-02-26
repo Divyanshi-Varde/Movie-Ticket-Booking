@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.carouselOne_container {
+  margin: 0 auto;
+  width: 1296px;
+  height: 304px;
+  background-color: #f3f3f3;
+  position: relative;
+}
+
+.carouselOne_left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.carouselOne_logo img {
+  width: 60px;
+  height: 36px;
+  margin-left: 103px;
+  margin-top: 42px;
+}
+
+.carouselOne_text {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 36px;
+  width: 482px;
+  margin-left: 103px;
+}
+
+.carouselOne_icons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-left: 103px;
+  margin-top: 2.7rem;
+}
+
+.carouselOne_icon1 {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.carouselOne_icon1 p {
+  color: #222;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+}
+
+.carouselOne_icon2 {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.carouselOne_icon2 p {
+  color: #222;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+}
+
+.carouselOne_image1 img {
+  height: 250px;
+  width: 180px;
+  position: absolute;
+  left: 800px;
+  top: 52px;
+}
+
+.carouselOne_image2 img {
+  height: 250px;
+  width: 225px;
+  position: absolute;
+  left: 900px;
+  top: 52px;
+}
