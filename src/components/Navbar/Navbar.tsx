@@ -5,7 +5,7 @@ import { RxDividerVertical } from "react-icons/rx";
 import logo from "./Images/tix id 1.png";
 import "./Navbar.css";
 
- export interface NavbarProps {
+export interface NavbarProps {
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -27,9 +27,13 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
 
             <div className="navbar-right">
-              <div className="navbar-right-data">Home</div>
+              <Link to="/" className="navbar-right-data">
+                <div>Home</div>
+              </Link>
               <div className="navbar-right-data">My Ticket</div>
-              <div className="navbar-right-data">TIX ID News</div>
+              <Link to="/news" className="navbar-right-data">
+                <div>TIX ID News</div>
+              </Link>
               {!isLoggedIn && (
                 <Link className="vertical_line" to="/">
                   <div>

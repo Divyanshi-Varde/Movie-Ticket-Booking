@@ -1,5 +1,6 @@
 import React from "react";
 import "./ComingSoon.css";
+import { useNavigate } from "react-router-dom";
 
 interface Movie {
   id: number;
@@ -15,6 +16,11 @@ interface ComingSoonProps {
 }
 
 const ComingSoon: React.FC<ComingSoonProps> = ({ movies }) => {
+  const navigate = useNavigate();
+
+  function clickHandler() {
+    navigate("/upcoming");
+  }
   return (
     <div className="comingSoon">
       <div className="comingSoon_text">
@@ -27,7 +33,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ movies }) => {
           </div>
         </div>
         <div className="see_all_button">
-          <button>
+          <button onClick={clickHandler}>
             <pre>See All</pre>
           </button>
         </div>

@@ -18,7 +18,7 @@ const news: NewsItem[] = [
   {
     id: 2,
     image: "https://i.ytimg.com/vi/PbkyO3s4rq8/maxresdefault.jpg",
-    type: "Spotlight",
+    type: "Video",
     description:
       "Yowis Ben Finale Film Facts That You Need to Know Before Watching!",
     date: "09 Nov 2021 | TIX ID",

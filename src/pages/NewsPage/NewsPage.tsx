@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/footer";
-import articles, { Article } from "./spotlightData";
+// import articles, { Article } from "./spotlightData";
 import news, { NewsItem } from "./newsData";
 import { CiSearch } from "react-icons/ci";
 import "./NewsPage.css";
@@ -72,7 +72,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
 
         <div>
-          {articles.map((item: Article, index: number) => (
+          {news.map((item: NewsItem, index: number) => (
             <div
               key={item.id}
               className={
@@ -81,7 +81,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             >
               <div className="container_text">
                 <div className="container_button">
-                  <button>Spotlight</button>
+                  <button>{item.type}</button>
                 </div>
 
                 <div className="container_title">{item.title}</div>
@@ -99,7 +99,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </div>
 
-      <div className="news_images1">
+      {/* <div className="news_images1">
         {news.map((item: NewsItem) => (
           <div key={item.id} className="news_articles">
             <div className="news_image1">
@@ -112,7 +112,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             <div className="news_date">{item.date}</div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div>
         <Footer />
