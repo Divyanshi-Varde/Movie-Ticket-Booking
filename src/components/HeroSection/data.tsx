@@ -7,6 +7,7 @@ export interface Picture {
   badge3: string;
 }
 
+
 const pictures: Picture[] = [
   {
     id: 1,

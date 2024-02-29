@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
+// import { Formik,Form,Field } from "formik"
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -16,6 +17,16 @@ interface SignupPageProps {
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+// function validateEmail(value: any) {
+//   let error;
+//   if (!value) {
+//     error = "Required";
+//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+//     error = "Invalid email address";
+//   }
+//   return error;
+// }
 
 const SignupPage: React.FC<SignupPageProps> = ({
   isLoggedIn,
@@ -135,6 +146,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
                     value={formData.email}
                     onChange={changeHandler}
                     placeholder="Enter Email"
+                    // validate={validateEmail}
                   />
                 </div>
 

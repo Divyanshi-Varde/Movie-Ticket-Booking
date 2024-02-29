@@ -5,8 +5,9 @@
 }
 
 .upcomingMovies {
-  width: 1297px;
-  margin: 0 auto;
+  width: 1340px;
+  margin-top: 0;
+  margin-left: 3rem;
 
   display: flex;
   flex-direction: column;
@@ -41,14 +42,14 @@
   display: flex;
   flex-direction: row;
   gap: 50px;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   margin: 4rem 0.2rem;
 }
 
 .upcomingMovies_image img {
-  height: 507px;
-  width: 359px;
+  height: 600px;
+  width: 400px;
   border-radius: 15px;
 }
 

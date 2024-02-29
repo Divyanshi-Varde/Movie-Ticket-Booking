@@ -6,7 +6,7 @@
 
 .news_container {
   width: 1297px;
-  height: 459px;
+  height: 570px;
   margin: 0 auto;
 
   display: flex;
@@ -55,6 +55,14 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1.5rem;
+
+  overflow-x: auto;
+  max-width: 1310px;
+  flex-wrap: nowrap;
+}
+
+.news_images::-webkit-scrollbar {
+  display: none;
 }
 
 .news_image img {
@@ -73,7 +81,6 @@
 }
 
 .news_desc {
-  width: 370px;
   font-family: "Roboto", sans-serif;
   font-size: 22px;
   line-height: 32px;
@@ -81,6 +88,9 @@
   margin-top: 1rem;
 }
 
+/* .news_desc p {
+  width: 200px;
+} */
 .news_date {
   font-family: "Roboto", sans-serif;
   font-size: 16px;

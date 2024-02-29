@@ -38,8 +38,9 @@
 
 .signupOne_container {
   margin-top: 35px;
-  width: 640px;
+  width: 600px;
   height: 590px;
+  border-radius: 10px;
   background-color: white;
 }
 
@@ -197,8 +198,9 @@
 
 .signupTwo_container {
   margin-top: 35px;
-  width: 640px;
+  width: 600px;
   height: 590px;
+  border-radius: 10px;
   background-color: white;
 }
 

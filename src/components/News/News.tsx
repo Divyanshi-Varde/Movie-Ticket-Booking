@@ -39,7 +39,7 @@ const News: React.FC<NewsProps> = ({ news }) => {
             <div className="news_type">
               <button>{item.type}</button>
             </div>
-            <div className="news_desc">{item.description}</div>
+            <div className="news_desc"><p>{item.description}</p></div>
             <div className="news_date">{item.date}</div>
           </div>
         ))}

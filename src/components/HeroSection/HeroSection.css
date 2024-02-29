@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.hero-section {
+.hero-section{
   width: 1200px;
   height: 856px;
   margin-left: 111px;
@@ -22,6 +22,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  /* overflow-x: auto;
+  max-width: 1200px;
+  flex-wrap: nowrap; */
+
   gap: 80px;
 }
 
@@ -77,6 +82,7 @@
   height: 72px;
   border-radius: 50%;
   border: rgb(179, 175, 175) 0.5px solid;
+  cursor: pointer;
 }
 
 .slider:hover {

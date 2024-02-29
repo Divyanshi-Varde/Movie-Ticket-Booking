@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/footer";
 import news, { NewsItem } from "./newsData";
 import { CiSearch } from "react-icons/ci";
 import "./NewsPage.css";
+import { useNavigate } from "react-router-dom";
 
 interface NewsPageProps {
   isLoggedIn: boolean;
@@ -12,6 +13,7 @@ interface NewsPageProps {
 }
 
 const NewsPage: React.FC<NewsPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <div>
@@ -81,7 +83,11 @@ const NewsPage: React.FC<NewsPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             >
               <div className="container_text">
                 <div className="container_button">
-                  <button>{item.type}</button>
+                  <button
+                    onClick={() => navigate(`/${item.type.toLowerCase()}`)}
+                  >
+                    {item.type}
+                  </button>
                 </div>
 
                 <div className="container_title">{item.title}</div>

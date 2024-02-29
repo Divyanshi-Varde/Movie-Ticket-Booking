@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import toast from "react-hot-toast";
+// import { Formik, Form, Field } from "formik";
 import "./LoginPage.css";
 
 interface LoginPageProps {
@@ -14,6 +15,25 @@ interface FormData {
   phone: string;
   password: string;
 }
+
+// function validateEmail(value: any) {
+//   let error;
+//   if (!value) {
+//     error = "Required";
+//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+//     error = "Invalid email address";
+//   }
+//   return error;
+// }
+
+// function validateUsername(value: any) {
+//   let error;
+//   if (value === "admin") {
+//     error = "Nice try!";
+//   }
+//   return error;
+// }
+
 
 const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   const [formData, setFormData] = useState<FormData>({
@@ -76,6 +96,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                 onChange={changeHandler}
                 value={formData.phone}
                 placeholder="+91 | Enter Mobile Number"
+                required
               />
             </div>
 
@@ -92,6 +113,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                 onChange={changeHandler}
                 value={formData.password}
                 placeholder="Enter Password"
+                required
               />
               <div
                 className="eye_icon"
@@ -120,6 +142,41 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
           </div>
         </form>
+
+        {/* <Formik
+          initialValues={{
+            username: "",
+            email: "",
+          }}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+        >
+          {({ errors, touched, validateField, validateForm }) => (
+            <Form>
+              <Field name="email" validate={validateEmail} />
+              {errors.email && touched.email && <div>{errors.email}</div>}
+
+              <Field name="username" validate={validateUsername} />
+              {errors.username && touched.username && (
+                <div>{errors.username}</div>
+              )}
+              
+              <button type="button" onClick={() => validateField("username")}>
+                Check Username
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => validateForm().then(() => console.log("blah"))}
+              >
+                Validate All
+              </button>
+              <button type="submit">Submit</button>
+            </Form>
+          )}
+        </Formik> */}
+
         <div className="last_text">
           2021 TIX ID - PT Nusantara Elang Sejahtera.
         </div>
