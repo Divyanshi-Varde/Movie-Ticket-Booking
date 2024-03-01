@@ -1,9 +1,10 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import toast from "react-hot-toast";
-// import { Formik, Form, Field } from "formik";
+import { useFormik } from "formik";
+import { loginSchema } from "../../schema/loginSchema";
 import "./LoginPage.css";
 
 interface LoginPageProps {
@@ -11,58 +12,29 @@ interface LoginPageProps {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface FormData {
-  phone: string;
-  password: string;
-}
-
-// function validateEmail(value: any) {
-//   let error;
-//   if (!value) {
-//     error = "Required";
-//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-//     error = "Invalid email address";
-//   }
-//   return error;
-// }
-
-// function validateUsername(value: any) {
-//   let error;
-//   if (value === "admin") {
-//     error = "Nice try!";
-//   }
-//   return error;
-// }
-
-
 const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
-  const [formData, setFormData] = useState<FormData>({
+  const navigate = useNavigate();
+  const initialValues = {
     phone: "",
     password: "",
+  };
+
+  const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
+    initialValues: initialValues,
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
+      console.log(values);
+      setIsLoggedIn(true);
+      toast.success("Logged In Successfully!");
+      navigate("/");
+      console.log("in the onsubmit");
+    },
   });
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   function clickHandler() {
     navigate("/signup");
-  }
-
-  console.log(formData);
-
-  function changeHandler(event: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  }
-
-  function submitHandler(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    // setIsLoggedIn(true);
-    toast.success("Logged In");
-    navigate("/");
-    console.log("login page ma login thyu? :", isLoggedIn);
   }
 
   function returnHandler() {
@@ -82,7 +54,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
       <div className="login_container">
         <div className="login_heading">Log in to TIX ID</div>
 
-        <form onSubmit={submitHandler}>
+        <form onSubmit={handleSubmit}>
           <div className="login_form">
             <div className="phone_field">
               <label id="phone" className="phone_label">
@@ -93,11 +65,13 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                 className="phone_input"
                 name="phone"
                 id="phone"
-                onChange={changeHandler}
-                value={formData.phone}
+                onChange={handleChange}
+                value={values.phone}
+                onBlur={handleBlur}
                 placeholder="+91 | Enter Mobile Number"
-                required
+                autoComplete="off"
               />
+              <p className="form-error">{errors.phone}</p>
             </div>
 
             <div className="password_field">
@@ -110,11 +84,13 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                 name="password"
                 id="password"
                 type={showPassword ? "text" : "password"}
-                onChange={changeHandler}
-                value={formData.password}
+                onChange={handleChange}
+                value={values.password}
+                onBlur={handleBlur}
                 placeholder="Enter Password"
-                required
+                autoComplete="off"
               />
+              <p className="form-error">{errors.password}</p>
               <div
                 className="eye_icon"
                 onClick={() => {
@@ -126,13 +102,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
 
             <div className="login_button">
-              <button
-                onClick={() => {
-                  setIsLoggedIn(true);
-                }}
-              >
-                Login Now
-              </button>
+              <button type="submit">Login Now</button>
             </div>
 
             <div className="form_text">Don't have an account yet?</div>
@@ -142,40 +112,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
           </div>
         </form>
-
-        {/* <Formik
-          initialValues={{
-            username: "",
-            email: "",
-          }}
-          onSubmit={(values) => {
-            console.log(values);
-          }}
-        >
-          {({ errors, touched, validateField, validateForm }) => (
-            <Form>
-              <Field name="email" validate={validateEmail} />
-              {errors.email && touched.email && <div>{errors.email}</div>}
-
-              <Field name="username" validate={validateUsername} />
-              {errors.username && touched.username && (
-                <div>{errors.username}</div>
-              )}
-              
-              <button type="button" onClick={() => validateField("username")}>
-                Check Username
-              </button>
-              
-              <button
-                type="button"
-                onClick={() => validateForm().then(() => console.log("blah"))}
-              >
-                Validate All
-              </button>
-              <button type="submit">Submit</button>
-            </Form>
-          )}
-        </Formik> */}
 
         <div className="last_text">
           2021 TIX ID - PT Nusantara Elang Sejahtera.

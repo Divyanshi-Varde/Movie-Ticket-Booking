@@ -321,3 +321,8 @@
   padding-left: 40px;
   margin-top: 10rem;
 }
+
+.form-error {
+  color: red;
+  font-size: smaller;
+}

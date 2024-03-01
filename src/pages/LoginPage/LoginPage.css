@@ -104,7 +104,7 @@
   font-family: "Roboto", sans-serif;
   color: #9da8be;
   border-bottom: 1px solid #9da8be;
-  border-top: none; 
+  border-top: none;
   border-left: none;
   border-right: none;
   position: relative;
@@ -183,4 +183,9 @@
   font-family: "Roboto", sans-serif;
   padding-left: 40px;
   margin-top: 4.5rem;
+}
+
+.form-error {
+  color: red;
+  font-size: smaller;
 }

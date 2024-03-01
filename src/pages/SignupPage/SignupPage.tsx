@@ -1,45 +1,40 @@
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
-// import { Formik,Form,Field } from "formik"
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import { signupSchema } from "../../schema/signupSchema";
 import toast from "react-hot-toast";
 import "./SignupPage.css";
-
-interface FormData {
-  fname: string;
-  phone: string;
-  email: string;
-  password: string;
-}
 
 interface SignupPageProps {
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// function validateEmail(value: any) {
-//   let error;
-//   if (!value) {
-//     error = "Required";
-//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-//     error = "Invalid email address";
-//   }
-//   return error;
-// }
-
 const SignupPage: React.FC<SignupPageProps> = ({
   isLoggedIn,
   setIsLoggedIn,
 }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({
+  const initialValues = {
     fname: "",
     phone: "",
     email: "",
     password: "",
+  };
+
+  const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: initialValues,
+    validationSchema: signupSchema,
+    onSubmit: (values) => {
+      console.log(values);
+      setIsLoggedIn(true);
+      toast.success("Signed In Successfully");
+      navigate("/");
+    },
   });
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleReturn = () => {
@@ -50,19 +45,16 @@ const SignupPage: React.FC<SignupPageProps> = ({
     navigate("/");
   };
 
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const handleContinue = () => {
+    const isPageOneComplete = currentPage === 1 && values.fname && values.phone;
+    const isPageTwoComplete =
+      currentPage === 2 && values.email && values.password;
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsLoggedIn(true);
-    toast.success("Logged In");
-    navigate("/");
+    if (isPageOneComplete || isPageTwoComplete) {
+      setCurrentPage(currentPage + 1);
+    } else {
+      toast.error("Please fill all the fields before continuing");
+    }
   };
 
   return (
@@ -78,44 +70,54 @@ const SignupPage: React.FC<SignupPageProps> = ({
           <div className="signupOne_container">
             <div className="signupOne_heading">Sign up to TIX ID</div>
 
-            <div className="signupOne_form">
-              <div className="phone_field">
-                <label id="fname" className="fname_label">
-                  Full name
-                </label>
-                <br></br>
-                <input
-                  className="fname_input"
-                  name="fname"
-                  id="fname"
-                  onChange={changeHandler}
-                  placeholder="Enter Full Name"
-                  value={formData.fname}
-                />
-              </div>
+            <form onSubmit={handleSubmit}>
+              <div className="signupOne_form">
+                <div className="phone_field">
+                  <label id="fname" className="fname_label">
+                    Full name
+                  </label>
+                  <br></br>
+                  <input
+                    className="fname_input"
+                    name="fname"
+                    id="fname"
+                    placeholder="Enter Full Name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    autoComplete="off"
+                    value={values.fname}
+                  />
+                  <p className="form-error">{errors.fname}</p>
+                </div>
 
-              <div className="phone_field">
-                <label id="phone" className="phone_label">
-                  Mobile Number
-                </label>
-                <br></br>
-                <input
-                  className="phone_input"
-                  name="phone"
-                  id="phone"
-                  onChange={changeHandler}
-                  placeholder="+91 | Enter Mobile Number"
-                  value={formData.phone}
-                />
-              </div>
+                <div className="phone_field">
+                  <label id="phone" className="phone_label">
+                    Mobile Number
+                  </label>
+                  <br></br>
+                  <input
+                    className="phone_input"
+                    name="phone"
+                    id="phone"
+                    placeholder="+91 | Enter Mobile Number"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    autoComplete="off"
+                    value={values.phone}
+                  />
+                  <p className="form-error">{errors.phone}</p>
+                </div>
 
-              <button
-                onClick={() => setCurrentPage(2)}
-                className="continue_button"
-              >
-                Continue
-              </button>
-            </div>
+                <button
+                  onClick={() => {
+                    handleContinue();
+                  }}
+                  className="continue_button"
+                >
+                  Continue
+                </button>
+              </div>
+            </form>
             <div className="last_para">
               2021 TIX ID - PT Nusantara Elang Sejahtera.
             </div>
@@ -132,7 +134,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
           <div className="signupTwo_container">
             <div className="signupTwo_heading">Sign up to TIX ID</div>
 
-            <form onSubmit={submitHandler}>
+            <form onSubmit={handleSubmit}>
               <div className="signupTwo_form">
                 <div className="email_field">
                   <label id="email" className="email_label">
@@ -143,12 +145,14 @@ const SignupPage: React.FC<SignupPageProps> = ({
                     className="phone_input"
                     name="email"
                     id="email"
-                    value={formData.email}
-                    onChange={changeHandler}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    autoComplete="off"
+                    value={values.email}
                     placeholder="Enter Email"
-                    // validate={validateEmail}
                   />
                 </div>
+                <p className="form-error">{errors.email}</p>
 
                 <div className="password_field">
                   <label id="password" className="password_label">
@@ -159,11 +163,14 @@ const SignupPage: React.FC<SignupPageProps> = ({
                     className="password_input"
                     name="password"
                     id="password"
-                    value={formData.password}
-                    onChange={changeHandler}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    autoComplete="off"
+                    value={values.password}
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter Password"
                   />
+                  <p className="form-error">{errors.password}</p>
                   <div
                     className="eye_icon"
                     onClick={() => {
