@@ -22,8 +22,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: initialValues,
     validationSchema: loginSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, action) => {
       console.log(values);
+      action.resetForm();
       setIsLoggedIn(true);
       toast.success("Logged In Successfully!");
       navigate("/");

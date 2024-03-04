@@ -26,8 +26,9 @@ const SignupPage: React.FC<SignupPageProps> = ({
   const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
     validationSchema: signupSchema,
-    onSubmit: (values) => {
+    onSubmit: (values,action) => {
       console.log(values);
+      action.resetForm();
       setIsLoggedIn(true);
       toast.success("Signed In Successfully");
       navigate("/");
