@@ -41,13 +41,12 @@ const rightShiftHandler = () => {
   {pictures.slice(index, index + startIndex).map((picture: Picture) => (
     <div
       key={picture.id}
-      onClick={() => clickHandler(picture.description)}
-    >
+      onClick={() => clickHandler(picture.name)}>
       <div className="hero-section-image">
-        <img src={picture.image} alt={picture.description} />
+        <img src={picture.image} alt={picture.name} />
       </div>
       <div className="hero-section-text">
-        <p>{picture.description}</p>
+        <p>{picture.name}</p>
       </div>
       <div className="hero-section-badges">
         <div className="badge one">{picture.badge1}</div>

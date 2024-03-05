@@ -11,7 +11,7 @@ export interface Picture {
   like: number;
   duration: string;
   director: string;
-  agerating: string;
+  avgRating: string;
   releaseDate: string;
   trailer: string;
   key: string;
@@ -33,7 +33,7 @@ const movies: Picture[] = [
     like: 1000,
     duration: "2 hours 28 Minutes",
     director: "Jon Watts",
-    agerating: "U",
+    avgRating: "U",
     releaseDate: "08 Nov 2021 | TIX ID",
     trailer: "https://www.youtube.com/watch?v=Hi4ktzK9g0I",
     key: "Spiderman",
@@ -53,7 +53,7 @@ const movies: Picture[] = [
     like: 1200,
     duration: "2 hours 28 Minutes",
     director: " Jon Watts",
-    agerating: "U/A",
+    avgRating: "U/A",
     releaseDate: "08 Nov 2021 | TIX ID",
     trailer: "https://www.youtube.com/watch?v=PbkyO3s4rq8",
     key: "Yowis Ben",
@@ -74,7 +74,7 @@ const movies: Picture[] = [
     like: 300,
     duration: "2 hours 28 Minutes",
     director: " Jon Watts",
-    agerating: " U",
+    avgRating: " U",
     releaseDate: "08 Nov 2021 | TIX ID",
     trailer: "https://www.youtube.com/watch?v=Lrr4bvwldiM",
     key: "Ghostbusters",
@@ -94,7 +94,7 @@ const movies: Picture[] = [
     tag: "News",
     duration: "2 hours 28 Minutes",
     director: " Jon Watts",
-    agerating: "A",
+    avgRating: "A",
     like: 20,
     releaseDate: "08 Nov 2021 | TIX ID",
     trailer: "https://www.youtube.com/watch?v=pGi3Bgn7U5U",
@@ -115,7 +115,7 @@ const movies: Picture[] = [
     tag: "News",
     duration: "2 hours 14 Minutes",
     director: "Rajkumar Hirani",
-    agerating: "A",
+    avgRating: "A",
     like: 10000,
     releaseDate: "08 Nov 2006 | TIX ID",
     trailer: "https://www.youtube.com/watch?v=K0eDlFX9GMc",
@@ -137,7 +137,7 @@ const movies: Picture[] = [
     tag: "Spotlight",
     duration: "2 hours 10 Minutes",
     director: "Rajkumar Hirani",
-    agerating: "A",
+    avgRating: "A",
     like: 100,
     releaseDate: "08 Nov 2006 | TIX ID",
     trailer: "https://www.youtube.com/watch?v=fHpapP-QiDI",
