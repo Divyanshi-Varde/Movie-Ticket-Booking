@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { setDate } from "../../../redux/Slices/movieBookingSlice";
 import { useDispatch } from "react-redux";
-import "./DateItems.css";
+import "./DateSlider.css";
 
 interface DateSelectorProps {
   onDateSelect: (date: Date) => void;

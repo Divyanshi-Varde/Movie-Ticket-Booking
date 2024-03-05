@@ -3,16 +3,16 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import loginSlice from "../Slices/loginSlice";
 import signupSlice from "../Slices/signupSlice";
-// import MovieSlice from "../Slice/MovieSlice";
-import TheaterDataSlice from "../Slices/theatreDataSlice";
+import movieShowSlice from "../Slices/movieShowSlice";
+import theatreDataSlice from "../Slices/theatreDataSlice";
 import movieBookingSlice from "../Slices/movieBookingSlice";
 import userTicketSlice from "../Slices/userTicketSlice";
 
 const rootReducer = combineReducers({
   login: loginSlice,
   signup: signupSlice,
-  //   movies: MovieSlice,
-  theatre: TheaterDataSlice,
+  movies: movieShowSlice,
+  theatre: theatreDataSlice,
   movieBooking: movieBookingSlice,
   myTicket: userTicketSlice,
 });

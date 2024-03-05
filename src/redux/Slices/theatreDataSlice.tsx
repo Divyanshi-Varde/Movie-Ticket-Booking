@@ -1,40 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { showTheaterData } from "../Thunk/theatreDataThunk";
-import { TheaterData } from "../../pages/ChoosingSchedule/theatreData";
+import { showTheatreData } from "../Thunk/theatreDataThunk";
+import { TheatreData } from "../../pages/ChoosingSchedule/theatreData";
 
-export interface InitialStateTheater {
-  theaterData: TheaterData[];
+export interface InitialStateTheatre {
+  theatreData: TheatreData[];
   theaterloading: boolean;
-  error: String;
+  error: string;
 }
 
-export const TheaterDataSlice = createSlice({
+export const TheatreDataSlice = createSlice({
   name: "schedule",
   initialState: {
-    theaterData: [],
+    theatreData: [],
     theaterloading: false,
     error: "",
-  } as InitialStateTheater,
+  } as InitialStateTheatre,
   reducers: {
-    showAllTheaterData: (state, action) => {
-      console.log("sate moviedata TheaterData", state.theaterData);
+    showAllTheatreData: (state, action) => {
+      console.log("TheatreData:", state.theatreData);
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(showTheaterData.pending, (state) => {
+      .addCase(showTheatreData.pending, (state) => {
         state.theaterloading = true;
       })
-      .addCase(showTheaterData.fulfilled, (state, action) => {
+      .addCase(showTheatreData.fulfilled, (state, action) => {
         state.theaterloading = false;
-        state.theaterData = action.payload;
+        state.theatreData = action.payload;
       })
-      .addCase(showTheaterData.rejected, (state, action) => {
+      .addCase(showTheatreData.rejected, (state, action) => {
         state.theaterloading = false;
         state.error = action.payload as string;
       });
   },
 });
 
-export const { showAllTheaterData } = TheaterDataSlice.actions;
-export default TheaterDataSlice.reducer;
+export const { showAllTheatreData } = TheatreDataSlice.actions;
+export default TheatreDataSlice.reducer;

@@ -53,7 +53,7 @@
 }
 .movie-details {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-left: 10px;
 }
 

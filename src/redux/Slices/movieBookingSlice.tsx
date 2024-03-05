@@ -1,87 +1,139 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Picture } from "../../components/HeroSection/data";
 
-const initialState = {
+interface MovieBookingState {
+  selectedMovie: Picture | {};
+  selectedTheatre: {};
+  selectedDate: string;
+  selectedTime: string;
+  theatre_Index: string;
+  type_Index: string;
+  selecteddimension: {};
+  selectedtotal: string;
+  selectseat: [];
+  selectdiscount: string;
+  selectfinalprice: string;
+  moviesData: Picture[];
+}
+const initialState: MovieBookingState = {
   selectedMovie: {},
-  selectedTheater: {},
+  selectedTheatre: {},
   selectedDate: "",
   selectedTime: "",
-  theater_Index: "",
+  theatre_Index: "",
   type_Index: "",
   selecteddimension: {},
   selectedtotal: "",
   selectseat: [],
   selectdiscount: "",
   selectfinalprice: "",
+  moviesData: [],
 };
 
-const MovieBookingSlice = createSlice({
+const movieBookingSlice = createSlice({
   name: "movieBooking",
   initialState,
   reducers: {
-    setMovieData: (state, action) => {
+    setMoviesData: (state, action: PayloadAction<Picture[]>) => {
+      state.moviesData = action.payload;
+    },
+    setMovieData: (
+      state,
+      action: PayloadAction<typeof initialState.selectedMovie>
+    ) => {
       state.selectedMovie = action.payload;
     },
-    setTheaterData: (state, action) => {
-      state.selectedTheater = action.payload.theater;
+    setTheatreData: (
+      state,
+      action: PayloadAction<{ theatre: typeof initialState.selectedTheatre }>
+    ) => {
+      state.selectedTheatre = action.payload.theatre;
     },
     resetMovieBooking: (state) => {
       state.selectedMovie = {};
-      state.selectedTheater = {};
-      (state.selectedDate = ""),
-        (state.selectedTime = ""),
-        (state.theater_Index = ""),
-        (state.type_Index = ""),
-        (state.selecteddimension = {}),
-        (state.selectedtotal = ""),
-        (state.selectseat = []),
-        (state.selectdiscount = ""),
-        (state.selectfinalprice = "");
+      state.selectedTheatre = {};
+      state.selectedDate = "";
+      state.selectedTime = "";
+      state.theatre_Index = "";
+      state.type_Index = "";
+      state.selecteddimension = {};
+      state.selectedtotal = "";
+      state.selectseat = [];
+      state.selectdiscount = "";
+      state.selectfinalprice = "";
     },
-    selectTime(state, action) {
+    selectTime: (
+      state,
+      action: PayloadAction<typeof initialState.selectedTime>
+    ) => {
       state.selectedTime = action.payload;
     },
-    theaterIndex(state, action) {
-      state.theater_Index = action.payload;
+    theatreIndex: (
+      state,
+      action: PayloadAction<typeof initialState.theatre_Index>
+    ) => {
+      state.theatre_Index = action.payload;
     },
-    typeIndex(state, action) {
+    typeIndex: (
+      state,
+      action: PayloadAction<typeof initialState.type_Index>
+    ) => {
       state.type_Index = action.payload;
     },
-    setdimension(state, action) {
+    setdimension: (
+      state,
+      action: PayloadAction<typeof initialState.selecteddimension>
+    ) => {
       state.selecteddimension = action.payload;
     },
-    setDate(state, action) {
+    setDate: (
+      state,
+      action: PayloadAction<typeof initialState.selectedDate>
+    ) => {
       state.selectedDate = action.payload;
     },
-    settotal(state, action) {
+    setTotal: (
+      state,
+      action: PayloadAction<typeof initialState.selectedtotal>
+    ) => {
       state.selectedtotal = action.payload;
     },
-    setseat(state, action) {
+    setSeat: (state, action: PayloadAction<typeof initialState.selectseat>) => {
       state.selectseat = action.payload;
     },
-    setdiscount(state, action) {
+    setDiscount: (
+      state,
+      action: PayloadAction<typeof initialState.selectdiscount>
+    ) => {
       state.selectdiscount = action.payload;
     },
-    resetsetdiscount(state) {
+    resetDiscount: (state) => {
       state.selectdiscount = "";
     },
-    setfinalprice(state, action) {
+    setFinalPrice: (
+      state,
+      action: PayloadAction<typeof initialState.selectfinalprice>
+    ) => {
       state.selectfinalprice = action.payload;
     },
   },
 });
+
 export const {
   setMovieData,
-  setTheaterData,
+  setTheatreData,
   resetMovieBooking,
   selectTime,
-  theaterIndex,
+  theatreIndex,
   typeIndex,
   setdimension,
   setDate,
-  settotal,
-  setseat,
-  setdiscount,
-  resetsetdiscount,
-  setfinalprice,
-} = MovieBookingSlice.actions;
-export default MovieBookingSlice.reducer;
+  setTotal,
+  setSeat,
+  setDiscount,
+  resetDiscount,
+  setFinalPrice,
+  setMoviesData,
+} = movieBookingSlice.actions;
+
+export default movieBookingSlice.reducer;

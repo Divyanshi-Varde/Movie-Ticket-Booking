@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { theaterData } from "../../pages/ChoosingSchedule/theatreData"
+import { theatreData } from "../../pages/ChoosingSchedule/theatreData"
 
-export const showTheaterData = createAsyncThunk(
-  "showTheaterData",
+export const showTheatreData = createAsyncThunk(
+  "showTheatreData",
   async (args, { rejectWithValue }) => {
     try {
-      const theaterresult = theaterData;
-      return theaterresult;
+      const theatreResult = theatreData;
+      return theatreResult;
     } catch (error) {
       return rejectWithValue(error);
     }

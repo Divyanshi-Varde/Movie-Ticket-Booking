@@ -36,10 +36,10 @@ const signupSlice = createSlice({
       state.signupState = action.payload;
     },
     setSignupclearn_value: (state) => {
-      (state.fname = ""),
-        (state.phone = ""),
-        (state.email = ""),
-        (state.password = "");
+      state.fname = "";
+      state.phone = "";
+      state.email = "";
+      state.password = "";
     },
   },
 });

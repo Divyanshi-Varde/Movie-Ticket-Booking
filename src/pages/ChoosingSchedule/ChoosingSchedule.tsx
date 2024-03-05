@@ -3,35 +3,27 @@ import { FiSearch } from "react-icons/fi";
 import { FcFilmReel } from "react-icons/fc";
 import { CiLocationOn } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
-import DateSelector from "./DateSlider/DateSlider";
+import DateSlider from "./DateSlider/DateSlider";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
-import "./MovieDetails.css";
+import "./ChoosingSchedule.css";
 import {
   selectTime,
   setDate,
-  setTheaterData,
+  setTheatreData,
   setdimension,
-  theaterIndex,
+  theatreIndex,
   typeIndex,
 } from "../../redux/Slices/movieBookingSlice";
 import { Picture } from "../../components/HeroSection/data";
 import { DimensionData } from "./theatreData";
 
-const MovieDetails = () => {
+const ChoosingSchedule = () => {
   const dispatch = useDispatch();
 
-  const { moviesData, loading, error } = useSelector(
-    (state: any) => state.movies
-  );
+  const { moviesData } = useSelector((state: any) => state.movies);
   console.log("moviesData", moviesData);
-  const { theaterData, theaterloading } = useSelector(
-    (state: any) => state.theator
-  );
-  console.log("theaterData", theaterData);
-
-  // const [day, setDay] = useState<string>("");
-  // const [dateOfMonth, setDateOfMonth] = useState<number>();
-  // const [month, setMonth] = useState<string>("");
+  const { theatreData } = useSelector((state: any) => state.theatre);
+  console.log("theatreData", theatreData);
 
   const handleDateSelect = (date: Date) => {
     const formattedDay = date.toLocaleDateString("en-US", { weekday: "long" });
@@ -43,70 +35,70 @@ const MovieDetails = () => {
   };
 
   const [selectedCity, setSelectedCity] = useState("surat");
-  const [uniquetheaterNames, setuniquetheaterNames] = useState<string[]>([]);
+  const [uniquetheatreNames, setuniquetheatreNames] = useState<string[]>([]);
   const [uniqueDimensionNames, setUniqueDimensionNames] = useState<string[]>(
     []
   );
   const [uniquebadgeNames, setuniquebadgeNames] = useState<string[]>([]);
 
   const uniqueCityNames = [
-    ...(new Set(theaterData.map((theater: any) => theater.city)) as any),
+    ...(new Set(theatreData.map((theatre: any) => theatre.city)) as any),
   ];
 
   useEffect(() => {
-    const filtertheaterNames = theaterData.filter(
-      (theater: any) => theater.city === selectedCity
+    const filtertheatreNames = theatreData.filter(
+      (theatre: any) => theatre.city === selectedCity
     );
-    const theaterNames = [
+    const theatreNames = [
       ...(new Set(
-        filtertheaterNames.flatMap((theater: any) => theater.name)
+        filtertheatreNames.flatMap((theatre: any) => theatre.name)
       ) as any),
     ];
-    setuniquetheaterNames(theaterNames);
-  }, [theaterData, selectedCity]);
+    setuniquetheatreNames(theatreNames);
+  }, [theatreData, selectedCity]);
 
   useEffect(() => {
-    const filteredbadgeNames = theaterData.filter(
-      (theater: any) => theater.city === selectedCity
+    const filteredbadgeNames = theatreData.filter(
+      (theatre: any) => theatre.city === selectedCity
     );
     const badgeNames = [
       ...(new Set(
-        filteredbadgeNames.flatMap((theater: any) => theater.badge)
+        filteredbadgeNames.flatMap((theatre: any) => theatre.badge)
       ) as any),
     ];
     setuniquebadgeNames(badgeNames);
-  }, [theaterData, selectedCity]);
+  }, [theatreData, selectedCity]);
 
   useEffect(() => {
-    const filteredTheaters = theaterData.filter(
-      (theater: any) => theater.city === selectedCity
+    const filteredTheatres = theatreData.filter(
+      (theatre: any) => theatre.city === selectedCity
     );
     const dimensionNames = [
       ...(new Set(
-        filteredTheaters.flatMap((theater: any) =>
-          theater.dimension.map((dimension: any) => dimension.dimensionCategory)
+        filteredTheatres.flatMap((theatre: any) =>
+          theatre.dimension.map((dimension: any) => dimension.dimensionCategory)
         )
       ) as any),
     ];
     setUniqueDimensionNames(dimensionNames);
-  }, [theaterData, selectedCity]);
+  }, [theatreData, selectedCity]);
 
-  console.log("uniquetheaterNames", uniquetheaterNames);
+  console.log("uniquetheatreNames", uniquetheatreNames);
   console.log("uniqueDimensionNames", uniqueDimensionNames);
   console.log("uniquebadgeNames", uniquebadgeNames);
 
-  const [selectedtheater, setSelectedtheater] = useState<string>("");
+  const [selectedtheatre, setSelectedtheatre] = useState<string>("");
   const [selectedbadge, setSelectedbadge] = useState<string>("");
   const [selectedDimension, setSelectedDimension] = useState<string>("");
 
-  const filteredTheaterData = theaterData.filter(
-    (theater: any) =>
-      (!selectedCity || theater.city === selectedCity) &&
-      (!selectedtheater ||
-        theater.name.toLowerCase().includes(selectedtheater.toLowerCase())) &&
-      (!selectedbadge || theater.badge.includes(selectedbadge)) &&
+  const filteredTheatreData = theatreData.filter(
+    (theatre: any) =>
+      (!selectedCity || theatre.city === selectedCity) &&
+      (!selectedtheatre ||
+        theatre.name.toLowerCase().includes(selectedtheatre.toLowerCase())) &&
+      (!selectedbadge || theatre.badge.includes(selectedbadge)) &&
       (!selectedDimension ||
-        theater.dimension.some(
+        theatre.dimension.some(
           (dimension: any) => dimension.dimensionCategory === selectedDimension
         ))
   );
@@ -117,7 +109,9 @@ const MovieDetails = () => {
 
   console.log(moviesData);
 
-  const filteredMovies = moviesData.filter((movie: any) => movie.id == urlId);
+  const filteredMovies = moviesData.filter(
+    (movies: any) => movies.id === urlId
+  );
   console.log(filteredMovies);
 
   const { search } = useLocation();
@@ -127,24 +121,24 @@ const MovieDetails = () => {
     selecteddimension,
     selectedTime,
     selectedDate,
-    selectedTheater,
-    theater_Index,
+    selectedTheatre,
+    theatre_Index,
     type_Index,
   } = useSelector((state: any) => state.movieBooking);
   console.log(
-    "datas from moviesbooking slice",
+    "data from movieBookingSlice",
     selecteddimension,
     selectedTime,
     selectedDate,
-    selectedTheater,
-    theater_Index,
+    selectedTheatre,
+    theatre_Index,
     type_Index
   );
   console.log(selecteddimension.time);
 
-  const handleDimensionClick = (theater: any, dimension: any) => {
-    dispatch(setTheaterData({ theater }));
-    console.log(theater);
+  const handleDimensionClick = (theatre: any, dimension: any) => {
+    dispatch(setTheatreData({ theatre}));
+    console.log(theatre);
     dispatch(setdimension(dimension));
   };
 
@@ -153,14 +147,14 @@ const MovieDetails = () => {
     setSelectedDimension("");
   };
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedtheater(e.target.value);
+    setSelectedtheatre(e.target.value);
   };
 
-  const handleTimeSlotClick = (time: string) => {
-    if (selectedTime !== time) {
-      dispatch(selectTime(time));
-    }
-  };
+  // const handleTimeSlotClick = (time: string) => {
+  //   if (selectedTime !== time) {
+  //     dispatch(selectTime(time));
+  //   }
+  // };
 
   return (
     <div>
@@ -173,7 +167,7 @@ const MovieDetails = () => {
             </p>
           </div>
           <div className="datepartseaction">
-            <DateSelector onDateSelect={handleDateSelect} />
+            <DateSlider onDateSelect={handleDateSelect} />
           </div>
           <hr className="hrcsstry" />
 
@@ -247,42 +241,42 @@ const MovieDetails = () => {
             </div>
           </div>
           <div className="main-con-slot">
-            {filteredTheaterData.map((theater: any, i: number) => (
-              <div key={theater.id} className="semimain-con">
-                <div className="se-theatername">
-                  <div className="se-theater">
+            {filteredTheatreData.map((theatre: any, i: number) => (
+              <div key={theatre.id} className="semimain-con">
+                <div className="se-theatrename">
+                  <div className="se-theatre">
                     <div className="filmeicon-div">
                       <FcFilmReel className="fimeicon" />
                     </div>
                     <div>
-                      <p className="theatername">{theater.name}</p>
+                      <p className="theatrename">{theatre.name}</p>
                     </div>
                   </div>
                   <div>
                     <p
                       className={
-                        theater.badge === "CGV"
+                        theatre.badge === "CGV"
                           ? "CGV"
-                          : theater.badge === "XXI"
+                          : theatre.badge === "XXI"
                           ? "XXI"
-                          : theater.badge === "CINEPOLIS"
+                          : theatre.badge === "CINEPOLIS"
                           ? "CINEPOLIS"
                           : ""
                       }
                     >
-                      {theater.badge}
+                      {theatre.badge}
                     </p>
                   </div>
                 </div>
-                <p className="theateraddress">{theater.address}</p>
+                <p className="theatreaddress">{theatre.address}</p>
                 <div>
                   <div>
-                    {theater.dimension.map(
+                    {theatre.dimension.map(
                       (dimension: DimensionData, index: number) => (
                         <div
                           key={index}
                           onClick={() =>
-                            handleDimensionClick(theater, dimension)
+                            handleDimensionClick(theatre, dimension)
                           }
                         >
                           <p className="dimentiontitile">
@@ -293,14 +287,14 @@ const MovieDetails = () => {
                               <div
                                 key={idx}
                                 onClick={() => {
-                                  dispatch(selectTime(time)),
-                                    dispatch(theaterIndex(i)),
-                                    dispatch(typeIndex(index));
+                                  dispatch(selectTime(time));
+                                  dispatch(theatreIndex(i.toString()));
+                                  dispatch(typeIndex(index.toString()));
                                 }}
                                 className={`timeslot-border ${
                                   selectedTime === time &&
-                                  i == theater_Index &&
-                                  index == type_Index
+                                  i === theatre_Index &&
+                                  index === type_Index
                                     ? "selected"
                                     : ""
                                 }`}
@@ -324,7 +318,11 @@ const MovieDetails = () => {
             {filteredMovies.map((movie: Picture) => (
               <div className="splitdatatwopart">
                 <div>
-                  <img src={movie.image} className="se-movieimg"></img>
+                  <img
+                    src={movie.image}
+                    alt="image1"
+                    className="se-movieimg"
+                  ></img>
                 </div>
                 <div>
                   <h2 className="se-movietitle">{movie.name}</h2>
@@ -358,6 +356,7 @@ const MovieDetails = () => {
                   <h3>Please Select Time And Date</h3>
                   <img
                     src="https://tse2.mm.bing.net/th?id=OIP.LCnUbVbefQF7GrcWqRz2mwHaHa&pid=Api&P=0&h=180"
+                    alt="image1"
                     className="imgclass"
                   />
                 </div>
@@ -367,6 +366,7 @@ const MovieDetails = () => {
                   <h2>Please Select Date</h2>
                   <img
                     src="https://c.ststat.net/content/sites/KnittingAndStitchingShowSpecial/images/icon-date.png"
+                    alt="image1"
                     className="imgclass"
                   />
                 </div>
@@ -376,13 +376,14 @@ const MovieDetails = () => {
                   <h2>Please Select Time</h2>
                   <img
                     src="https://cdn2.iconfinder.com/data/icons/business-office-4/256/Office_Clock-1024.png"
+                    alt="image1"
                     className="imgclass"
                   />
                 </div>
               )}
               {selectedDate && selectedTime && (
                 <div>
-                  <h2 className="seatedtheatername">{selectedTheater.name}</h2>
+                  <h2 className="seatedtheatrename">{selectedTheatre.name}</h2>
                   <p className="selecteddate">{selectedDate}</p>
                   <div className="dimention-and-date">
                     <p>{selecteddimension.dimensionCategory}</p>
@@ -413,4 +414,4 @@ const MovieDetails = () => {
     </div>
   );
 };
-export default MovieDetails;
+export default ChoosingSchedule;

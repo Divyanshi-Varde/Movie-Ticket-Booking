@@ -4,7 +4,7 @@ export type DimensionData = {
   price: string;
 };
 
-export type TheaterData = {
+export type TheatreData = {
   id: string;
   name: string;
   city: string;
@@ -13,7 +13,7 @@ export type TheaterData = {
   dimension: DimensionData[];
 };
 
-export const theaterData: TheaterData[] = [
+export const theatreData: TheatreData[] = [
   {
     id: "1",
     name: "INOX: VR Mall",
