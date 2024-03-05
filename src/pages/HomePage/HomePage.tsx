@@ -9,7 +9,6 @@ import pictures, { Picture } from "../../components/HeroSection/data";
 import images, { Image } from "../../components/Carousel/data";
 import news from "../../components/News/data";
 import movies, { Movie } from "../../components/ComingSoon/data";
-import ChoosingSchedule from "../ChoosingSchedule/ChoosingSchedule";
 
 const Home: React.FC<NavbarProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
@@ -20,8 +19,6 @@ const Home: React.FC<NavbarProps> = ({ isLoggedIn, setIsLoggedIn }) => {
       <News news={news} />
       <ComingSoon movies={movies as Movie[]} />
       <Footer />
-
-      {/* <ChoosingSchedule setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/> */}
     </div>
   );
 };

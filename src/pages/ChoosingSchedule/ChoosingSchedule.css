@@ -1,0 +1,383 @@
+.main-con {
+  display: flex;
+
+  gap: 120px;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.left-con {
+  width: 55%;
+  margin: 2px 0px 2px 40px;
+}
+.right-con {
+  gap: 15px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.se-scheduletitle {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  color: rgba(51, 51, 51, 1);
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.se-decs {
+  margin-top: 2px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(90, 99, 122, 1);
+}
+.se-container {
+  margin: 0px 0px 30px 0px;
+}
+
+.imageflexset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.imgclass {
+  height: 150px;
+  width: 150px;
+}
+.movie-details {
+  display: flex;
+  justify-content: start;
+  margin-left: 10px;
+}
+
+.category > ul {
+  padding-left: 0px;
+}
+.category > ul > li,
+.info > ul > li {
+  list-style-type: none;
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.se-movieimg {
+  height: 350px;
+  width: 350px;
+  border-radius: 15px;
+}
+
+.se-movietitle {
+  padding-left: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.se-butcon {
+  padding: 5px 10px;
+  margin: 20px 0px;
+  width: 318px;
+  height: 233px;
+  padding: 40px, 24px, 40px, 24px;
+  border-radius: 12px;
+  border: 1px;
+  gap: 36px;
+  border: 1px solid rgba(90, 99, 122, 1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.se-butcon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.centertext {
+  text-align: center;
+}
+.seatedtheatername {
+  color: rgba(51, 51, 51, 1);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 2px;
+}
+.selecteddate {
+  color: rgba(90, 99, 122, 1);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.dimention-and-date {
+  padding: 0px 20px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.dimention-and-date > p {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0px;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(51, 51, 51, 1);
+}
+.se-but-condition {
+  color: rgba(157, 168, 190, 1);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  display: flex;
+}
+.se-but-booknow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(26, 44, 80, 1);
+  width: 268px;
+  height: 50px;
+  padding: 16px, 12px, 16px, 12px;
+  border-radius: 8px;
+  gap: 10px;
+  color: (255, 190, 0, 1);
+}
+.se-Booknow-but {
+  color: rgba(255, 190, 0, 1);
+  font-size: 20px;
+}
+.se-but-div {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hrcsstry {
+  width: 600px;
+  margin-left: 0px;
+}
+.locationcity {
+  display: flex;
+  align-items: center;
+}
+.fontsizeset {
+  color: rgba(0, 0, 0, 1);
+  color: rgba(196, 196, 196, 1);
+  font-size: 23px;
+}
+.sizeoodropdown {
+  font-size: 15px;
+  width: 105px;
+  height: 30px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(196, 196, 196, 1);
+}
+
+.all-filter-container {
+  display: flex;
+  margin: 10px 0px;
+  gap: 10px;
+}
+.threefilter {
+  display: flex;
+}
+.main-con-div-search {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.searchbar-div {
+  position: relative;
+}
+.searchicon-div {
+  margin-top: 3px;
+  position: absolute;
+  left: 215px;
+}
+.searchbar {
+  width: 220px;
+  height: 25px;
+  padding: 0px 10px;
+  border-radius: 5px;
+  color: rgba(90, 99, 122, 1);
+  border: 2px solid rgba(90, 99, 122, 1);
+}
+.searchbar::placeholder {
+  color: rgba(90, 99, 122, 1);
+}
+.searchicon {
+  color: rgba(90, 99, 122, 1);
+  font-size: 20px;
+}
+.borderremove {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.dropdown-colorset {
+  width: auto;
+  color: rgba(90, 99, 122, 1);
+}
+.clearfilter {
+  color: rgba(90, 99, 122, 1);
+  font-size: 12px;
+  cursor: pointer;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-con-slot {
+  margin: 50px 0px;
+}
+.semimain-con {
+  margin: 60px 0px;
+}
+.se-theatername {
+  margin-top: 50px;
+  justify-content: space-between;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+}
+.fimeicon {
+  font-size: 23px;
+}
+.theatername {
+  font-size: 23px;
+  color: rgba(51, 51, 51, 1);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.theateraddress {
+  margin-top: 5px;
+  font-size: 13px;
+  color: rgba(90, 99, 122, 1);
+}
+.se-theater {
+  display: flex;
+  gap: 10px;
+}
+.filmeicon-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dimentiontitile {
+  color: rgba(90, 99, 122, 1);
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.se-timeslot-div {
+  display: flex;
+  gap: 10px;
+}
+
+.timenumber {
+  margin: 0px;
+}
+
+.se-timeslot-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.timeslot-border {
+  border: 1px solid rgba(157, 168, 190, 1);
+
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.se-timeslot-div::after {
+  content: "";
+  flex-grow: 9999;
+}
+
+.CGV {
+  background-color: #ec1e2b;
+  color: white;
+  border-radius: 5px;
+  padding: 2px;
+}
+.CINEPOLIS {
+  background-color: #000e62;
+  color: white;
+  border-radius: 5px;
+  padding: 2px;
+}
+.XXI {
+  background-color: linear-gradient(to right, #f2c46f 0%, #c6943f 100%);
+  color: white;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.timeslot-border {
+  border: 1px solid rgba(157, 168, 190, 1);
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.timeslot-border:hover {
+  background-color: #f0f0f0;
+}
+
+.timenumber {
+  margin: 0;
+}
+
+.timeslot-border.selected {
+  background-color: #000e62;
+  color: white;
+}
+.selected {
+  background-color: #000e62;
+  color: white;
+}
+.notselected {
+  background-color: white;
+  color: white;
+}
+
+.datepartseaction {
+  width: 57%;
+}
