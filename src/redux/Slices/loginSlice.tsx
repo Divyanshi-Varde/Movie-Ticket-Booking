@@ -1,17 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-export interface LoginState {
-  phone: string;
-  password: string;
-  loginState: boolean;
+interface loginState{
+  phone:string;
+  password:string;
+  loginState:boolean
 }
 
-const initialState: LoginState = {
+const initialState: loginState = {
   phone: "",
   password: "",
   loginState: false,
 };
 
+// Create the slice
 const LoginSlice = createSlice({
   name: "login",
   initialState,
@@ -22,7 +23,7 @@ const LoginSlice = createSlice({
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
-    setLoginState: (state, action: PayloadAction<boolean>) => {
+    setLoginState: (state, action: PayloadAction<any>) => {
       state.loginState = action.payload;
     },
     setLogin: (state, action: PayloadAction<boolean>) => {

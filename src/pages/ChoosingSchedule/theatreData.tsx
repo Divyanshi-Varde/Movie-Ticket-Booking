@@ -96,7 +96,7 @@ export const theatreData: TheatreData[] = [
           "20:00",
           "21:00",
         ],
-        price: "240 - 265",
+        price: "265",
       },
       {
         dimensionCategory: "Gold Class 2D",
@@ -127,7 +127,7 @@ export const theatreData: TheatreData[] = [
   },
   {
     id: "6",
-    name: "PVR ICON Infiniti",
+    name: "PVR ICON Infinity",
     city: "mumbai",
     address: "VR, Dumas Rd, nr. VR Mall, New Magdalla, Surat, Gujarat 395007",
     badge: "XXI",
@@ -159,7 +159,7 @@ export const theatreData: TheatreData[] = [
           "20:00",
           "21:00",
         ],
-        price: "240 - 265",
+        price: "265",
       },
       {
         dimensionCategory: "Gold Class 2D",

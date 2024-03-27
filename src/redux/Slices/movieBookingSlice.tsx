@@ -9,10 +9,10 @@ interface MovieBookingState {
   theatre_Index: string;
   type_Index: string;
   selecteddimension: {};
-  selectedtotal: string;
-  selectseat: [];
-  selectdiscount: string;
-  selectfinalprice: string;
+  selectedtotal: number;
+  selectseat: string[];
+  selectdiscount: number;
+  selectfinalprice: number;
   moviesData: Picture[];
 }
 const initialState: MovieBookingState = {
@@ -23,10 +23,10 @@ const initialState: MovieBookingState = {
   theatre_Index: "",
   type_Index: "",
   selecteddimension: {},
-  selectedtotal: "",
+  selectedtotal: 0,
   selectseat: [],
-  selectdiscount: "",
-  selectfinalprice: "",
+  selectdiscount: 0,
+  selectfinalprice: 0,
   moviesData: [],
 };
 
@@ -57,10 +57,10 @@ const movieBookingSlice = createSlice({
       state.theatre_Index = "";
       state.type_Index = "";
       state.selecteddimension = {};
-      state.selectedtotal = "";
+      state.selectedtotal = 0;
       state.selectseat = [];
-      state.selectdiscount = "";
-      state.selectfinalprice = "";
+      state.selectdiscount = 0;
+      state.selectfinalprice = 0;
     },
     selectTime: (
       state,
@@ -92,23 +92,21 @@ const movieBookingSlice = createSlice({
     ) => {
       state.selectedDate = action.payload;
     },
-    setTotal: (
-      state,
-      action: PayloadAction<typeof initialState.selectedtotal>
-    ) => {
-      state.selectedtotal = action.payload;
+    setTotal: (state, action: PayloadAction<number>) => {
+        state.selectedtotal = action.payload;
+      
     },
     setSeat: (state, action: PayloadAction<typeof initialState.selectseat>) => {
       state.selectseat = action.payload;
     },
-    setDiscount: (
+    setdiscount: (
       state,
       action: PayloadAction<typeof initialState.selectdiscount>
     ) => {
       state.selectdiscount = action.payload;
     },
     resetDiscount: (state) => {
-      state.selectdiscount = "";
+      state.selectdiscount = 0;
     },
     setFinalPrice: (
       state,
@@ -130,7 +128,7 @@ export const {
   setDate,
   setTotal,
   setSeat,
-  setDiscount,
+  setdiscount,
   resetDiscount,
   setFinalPrice,
   setMoviesData,

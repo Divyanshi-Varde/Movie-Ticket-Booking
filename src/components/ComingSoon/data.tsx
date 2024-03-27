@@ -36,8 +36,7 @@ const movies: Movie[] = [
   },
   {
     id: 4,
-    image:
-      "https://bestoftheyear.in/wp-content/uploads/2016/03/3-Idiots-poster.jpg",
+    image: "http://mommylevy.com/wp-content/uploads/2014/02/3-idiot-poster.jpg",
     description: "3 Idiots: A tragic comedy",
     badge1: "XXI",
     badge2: "CGV",

@@ -4,32 +4,29 @@ import { GoEye, GoEyeClosed } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { signupSchema } from "../../schema/signupSchema";
+import { setSignup } from "../../redux/Slices/signupSlice";
 import toast from "react-hot-toast";
 import "./SignupPage.css";
+import { useDispatch } from "react-redux";
 
-interface SignupPageProps {
-  isLoggedIn: boolean;
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const SignupPage: React.FC<SignupPageProps> = ({
-  isLoggedIn,
-  setIsLoggedIn,
-}) => {
+
+const SignupPage: React.FC= () => {
+  const dispatch =useDispatch();
   const initialValues = {
     fname: "",
     phone: "",
     email: "",
     password: "",
+
   };
 
   const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
     validationSchema: signupSchema,
-    onSubmit: (values,action) => {
+    onSubmit: (values) => {
       console.log(values);
-      action.resetForm();
-      setIsLoggedIn(true);
+      dispatch(setSignup(values))
       toast.success("Signed In Successfully");
       navigate("/");
     },
@@ -187,11 +184,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
                 </div>
 
                 <div className="signup_button1">
-                  <button
-                    onClick={() => {
-                      setIsLoggedIn(true);
-                    }}
-                  >
+                  <button>
                     Sign In
                   </button>
                 </div>

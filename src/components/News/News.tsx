@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./News.css";
 import { NewsItem } from "./data";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,10 @@ interface NewsProps {
 
 const News: React.FC<NewsProps> = ({ news }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   function clickHandler() {
     navigate("/news");
@@ -39,7 +43,9 @@ const News: React.FC<NewsProps> = ({ news }) => {
             <div className="news_type">
               <button>{item.type}</button>
             </div>
-            <div className="news_desc"><p>{item.description}</p></div>
+            <div className="news_desc">
+              <p>{item.description}</p>
+            </div>
             <div className="news_date">{item.date}</div>
           </div>
         ))}

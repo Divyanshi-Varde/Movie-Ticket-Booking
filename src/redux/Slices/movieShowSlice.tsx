@@ -16,7 +16,7 @@ export const movieShowSlice = createSlice({
     error: "",
   } as InitialStateMovieData,
   reducers: {
-    showAllData: (state, action) => {
+    showAllData: (state) => {
       console.log("state.moviesData", state.moviesData);
     },
   },

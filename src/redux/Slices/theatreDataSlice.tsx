@@ -5,10 +5,10 @@ import { TheatreData } from "../../pages/ChoosingSchedule/theatreData";
 export interface InitialStateTheatre {
   theatreData: TheatreData[];
   theaterloading: boolean;
-  error: string;
+  error: String;
 }
 
-export const TheatreDataSlice = createSlice({
+export const theatreDataSlice = createSlice({
   name: "schedule",
   initialState: {
     theatreData: [],
@@ -16,7 +16,7 @@ export const TheatreDataSlice = createSlice({
     error: "",
   } as InitialStateTheatre,
   reducers: {
-    showAllTheatreData: (state, action) => {
+    showAllTheatreData: (state) => {
       console.log("TheatreData:", state.theatreData);
     },
   },
@@ -36,5 +36,49 @@ export const TheatreDataSlice = createSlice({
   },
 });
 
-export const { showAllTheatreData } = TheatreDataSlice.actions;
-export default TheatreDataSlice.reducer;
+export const { showAllTheatreData } = theatreDataSlice.actions;
+export default theatreDataSlice.reducer;
+
+
+//import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+// import { TheatreData } from "../../pages/ChoosingSchedule/theatreData";
+
+// export interface InitialStateTheatre {
+//   theatreData: TheatreData[];
+//   theaterloading: boolean;
+//   error: string;
+// }
+
+// const initialState: InitialStateTheatre = {
+//   theatreData: [],
+//   theaterloading: false,
+//   error: "",
+// };
+
+// export const theatreDataSlice = createSlice({
+//   name: "schedule",
+//   initialState,
+//   reducers: {
+//     showAllTheatreDataPending: (state) => {
+//       state.theaterloading = true;
+//     },
+//     showAllTheatreDataFulfilled: (
+//       state,
+//       action: PayloadAction<TheatreData[]>
+//     ) => {
+//       state.theaterloading = false;
+//       state.theatreData = action.payload;
+//     },
+//     showAllTheatreDataRejected: (state, action: PayloadAction<string>) => {
+//       state.theaterloading = false;
+//       state.error = action.payload;
+//     },
+//   },
+// });
+
+// export const {
+//   showAllTheatreDataPending,
+//   showAllTheatreDataFulfilled,
+//   showAllTheatreDataRejected,
+// } = theatreDataSlice.actions;
+// export default theatreDataSlice.reducer;

@@ -2,21 +2,18 @@ import React from "react";
 import image1 from "./Images/Clapperboard.png";
 import image2 from "./Images/Movie Roll.png";
 import "./PaymentSuccessPage.css";
-import Navbar, { NavbarProps } from "../../components/Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/footer";
+import { useNavigate } from "react-router-dom";
 
-interface PaymentSuccessProps extends NavbarProps {
-  isLoggedIn: boolean;
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const PaymentSuccess: React.FC<PaymentSuccessProps> = ({
-  isLoggedIn,
-  setIsLoggedIn,
-}) => {
+const PaymentSuccessPage: React.FC = () => {
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate("/my-ticket");
+  };
   return (
     <div>
-      <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+      <Navbar />
       <div className="paymentSuccess_container">
         <div className="paymentSuccess_heading">
           <h1>Payment successful!</h1>
@@ -41,7 +38,7 @@ const PaymentSuccess: React.FC<PaymentSuccessProps> = ({
           </p>
         </div>
         <div className="myTicket_button">
-          <button>My Ticket</button>
+          <button onClick={clickHandler}>My Ticket</button>
         </div>
       </div>
       <Footer />
@@ -49,4 +46,4 @@ const PaymentSuccess: React.FC<PaymentSuccessProps> = ({
   );
 };
 
-export default PaymentSuccess;
+export default PaymentSuccessPage;

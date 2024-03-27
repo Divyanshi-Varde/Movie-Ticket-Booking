@@ -13,9 +13,10 @@ import {
   setdimension,
   theatreIndex,
   typeIndex,
+  resetMovieBooking
 } from "../../redux/Slices/movieBookingSlice";
 import { Picture } from "../../components/HeroSection/data";
-import { DimensionData } from "./theatreData";
+import { DimensionData, TheatreData } from "./theatreData";
 
 const ChoosingSchedule = () => {
   const dispatch = useDispatch();
@@ -25,16 +26,20 @@ const ChoosingSchedule = () => {
   const { theatreData } = useSelector((state: any) => state.theatre);
   console.log("theatreData", theatreData);
 
+   useEffect(() => {
+     dispatch(resetMovieBooking());
+   }, []);
+
   const handleDateSelect = (date: Date) => {
     const formattedDay = date.toLocaleDateString("en-US", { weekday: "long" });
-    const formattedDateOfMonth = date.getDate();
+    const formattedDate = date.getDate();
     const formattedMonth = date.toLocaleDateString("en-US", { month: "long" });
     dispatch(
-      setDate(`${formattedDay} ${formattedDateOfMonth} ${formattedMonth}`)
+      setDate(`${formattedDay} ${formattedDate} ${formattedMonth}`)
     );
   };
 
-  const [selectedCity, setSelectedCity] = useState("surat");
+  const [selectedCity, setSelectedCity] = useState("mumbai");
   const [uniquetheatreNames, setuniquetheatreNames] = useState<string[]>([]);
   const [uniqueDimensionNames, setUniqueDimensionNames] = useState<string[]>(
     []
@@ -42,16 +47,18 @@ const ChoosingSchedule = () => {
   const [uniquebadgeNames, setuniquebadgeNames] = useState<string[]>([]);
 
   const uniqueCityNames = [
-    ...(new Set(theatreData.map((theatre: any) => theatre.city)) as any),
+    ...(new Set(
+      theatreData.map((theatre: TheatreData) => theatre.city)
+    ) as any),
   ];
 
   useEffect(() => {
     const filtertheatreNames = theatreData.filter(
-      (theatre: any) => theatre.city === selectedCity
+      (theatre: TheatreData) => theatre.city === selectedCity
     );
     const theatreNames = [
       ...(new Set(
-        filtertheatreNames.flatMap((theatre: any) => theatre.name)
+        filtertheatreNames.flatMap((theatre: TheatreData) => theatre.name)
       ) as any),
     ];
     setuniquetheatreNames(theatreNames);
@@ -59,11 +66,11 @@ const ChoosingSchedule = () => {
 
   useEffect(() => {
     const filteredbadgeNames = theatreData.filter(
-      (theatre: any) => theatre.city === selectedCity
+      (theatre: TheatreData) => theatre.city === selectedCity
     );
     const badgeNames = [
       ...(new Set(
-        filteredbadgeNames.flatMap((theatre: any) => theatre.badge)
+        filteredbadgeNames.flatMap((theatre: TheatreData) => theatre.badge)
       ) as any),
     ];
     setuniquebadgeNames(badgeNames);
@@ -71,12 +78,14 @@ const ChoosingSchedule = () => {
 
   useEffect(() => {
     const filteredTheatres = theatreData.filter(
-      (theatre: any) => theatre.city === selectedCity
+      (theatre: TheatreData) => theatre.city === selectedCity
     );
     const dimensionNames = [
       ...(new Set(
-        filteredTheatres.flatMap((theatre: any) =>
-          theatre.dimension.map((dimension: any) => dimension.dimensionCategory)
+        filteredTheatres.flatMap((theatre: TheatreData) =>
+          theatre.dimension.map(
+            (dimension: DimensionData) => dimension.dimensionCategory
+          )
         )
       ) as any),
     ];
@@ -87,12 +96,12 @@ const ChoosingSchedule = () => {
   console.log("uniqueDimensionNames", uniqueDimensionNames);
   console.log("uniquebadgeNames", uniquebadgeNames);
 
-  const [selectedtheatre, setSelectedtheatre] = useState<string>("");
-  const [selectedbadge, setSelectedbadge] = useState<string>("");
-  const [selectedDimension, setSelectedDimension] = useState<string>("");
+  const [selectedtheatre, setSelectedtheatre] = useState("");
+  const [selectedbadge, setSelectedbadge] = useState("");
+  const [selectedDimension, setSelectedDimension] = useState("");
 
   const filteredTheatreData = theatreData.filter(
-    (theatre: any) =>
+    (theatre: TheatreData) =>
       (!selectedCity || theatre.city === selectedCity) &&
       (!selectedtheatre ||
         theatre.name.toLowerCase().includes(selectedtheatre.toLowerCase())) &&
@@ -105,13 +114,15 @@ const ChoosingSchedule = () => {
 
   const [searchParams] = useSearchParams();
   const urlId = searchParams.get("id");
-  console.log(urlId);
+  const parsedUrlId = urlId ? parseInt(urlId, 10) : null;
+
+  console.log(parsedUrlId);
 
   console.log(moviesData);
 
-  const filteredMovies = moviesData.filter(
-    (movies: any) => movies.id === urlId
-  );
+  const filteredMovies = urlId
+    ? moviesData.filter((movie: Picture) => movie.id === parsedUrlId)
+    : [];
   console.log(filteredMovies);
 
   const { search } = useLocation();
@@ -125,19 +136,12 @@ const ChoosingSchedule = () => {
     theatre_Index,
     type_Index,
   } = useSelector((state: any) => state.movieBooking);
-  console.log(
-    "data from movieBookingSlice",
-    selecteddimension,
-    selectedTime,
-    selectedDate,
-    selectedTheatre,
-    theatre_Index,
-    type_Index
-  );
-  console.log(selecteddimension.time);
 
-  const handleDimensionClick = (theatre: any, dimension: any) => {
-    dispatch(setTheatreData({ theatre}));
+  const handleDimensionClick = (
+    theatre: TheatreData,
+    dimension: DimensionData
+  ) => {
+    dispatch(setTheatreData({ theatre }));
     console.log(theatre);
     dispatch(setdimension(dimension));
   };
@@ -149,12 +153,6 @@ const ChoosingSchedule = () => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedtheatre(e.target.value);
   };
-
-  // const handleTimeSlotClick = (time: string) => {
-  //   if (selectedTime !== time) {
-  //     dispatch(selectTime(time));
-  //   }
-  // };
 
   return (
     <div>
@@ -316,7 +314,7 @@ const ChoosingSchedule = () => {
         <div className="right-con">
           <div>
             {filteredMovies.map((movie: Picture) => (
-              <div className="splitdatatwopart">
+              <div className="splitdatatwopart" key={movie.id}>
                 <div>
                   <img
                     src={movie.image}
@@ -332,7 +330,7 @@ const ChoosingSchedule = () => {
                         <li className="">Tag</li>
                         <li>Duration</li>
                         <li>Director</li>
-                        <li>Age Rating</li>
+                        <li>AvgRating</li>
                       </ul>
                     </div>
                     <div className="info">
@@ -351,7 +349,8 @@ const ChoosingSchedule = () => {
 
           <div className="rightsidepart00">
             <div className="se-butcon">
-              {!selectedDate && !selectedTime && (
+          
+                  {!selectedDate && !selectedTime && (
                 <div className="imageflexset">
                   <h3>Please Select Time And Date</h3>
                   <img
@@ -395,12 +394,7 @@ const ChoosingSchedule = () => {
 
                   <div className="se-but-div">
                     <button className="se-but-booknow">
-                      <Link
-                        to={`/movie/${encodeURIComponent(
-                          urlId as any
-                        )}/sitehomepage`}
-                        className="se-Booknow-but"
-                      >
+                      <Link to={`/choosing-seats`} className="se-Booknow-but">
                         Book Now
                       </Link>
                     </button>

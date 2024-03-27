@@ -1,12 +1,9 @@
 import * as Yup from "yup";
 
 export const loginSchema = Yup.object({
-  phone: Yup.number()
-    .typeError("That doesn't look like a phone number")
-    .positive("A phone number can't start with a minus")
-    .integer("A phone number can't include a decimal point")
-    .min(1000000000, "A phone number must be at least 10 digits")
-    .required("A phone number is required"),
+  phone: Yup.string()
+    .required("A phone number is required")
+    .matches(/^[6-9]\d{9}$/, "Invalid Number"),
   password: Yup.string()
     .required("Please Enter your password")
     .matches(

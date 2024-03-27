@@ -102,8 +102,7 @@ const movies: Picture[] = [
   },
   {
     id: 5,
-    image:
-      "https://bestoftheyear.in/wp-content/uploads/2016/03/3-Idiots-poster.jpg",
+    image: "http://mommylevy.com/wp-content/uploads/2014/02/3-idiot-poster.jpg",
     imageUrl:
       "https://tse2.mm.bing.net/th?id=OIP.vy7d8DhLOWfHFbzd3UiHVQHaEK&pid=Api&P=0&h=180",
     name: "3 Idiots",

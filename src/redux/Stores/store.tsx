@@ -1,10 +1,19 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import loginSlice from "../Slices/loginSlice";
 import signupSlice from "../Slices/signupSlice";
 import movieShowSlice from "../Slices/movieShowSlice";
-import theatreDataSlice from "../Slices/theatreDataSlice";
+import theaterDataSlice from "../Slices/theatreDataSlice";
 import movieBookingSlice from "../Slices/movieBookingSlice";
 import userTicketSlice from "../Slices/userTicketSlice";
 
@@ -12,7 +21,7 @@ const rootReducer = combineReducers({
   login: loginSlice,
   signup: signupSlice,
   movies: movieShowSlice,
-  theatre: theatreDataSlice,
+  theatre: theaterDataSlice,
   movieBooking: movieBookingSlice,
   myTicket: userTicketSlice,
 });
@@ -26,6 +35,12 @@ const persistedReducer = persistReducer<any, any>(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);

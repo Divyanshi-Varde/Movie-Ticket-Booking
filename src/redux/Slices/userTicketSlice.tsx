@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface Movie {
+export interface Picture {
   id: number;
   name: string;
   image: string;
@@ -26,7 +26,7 @@ export interface Dimension {
   Dimension: string[];
 }
 export interface ticketEntry {
-  movie: Movie;
+  movie: Picture;
   theater: Theater;
   date: Date;
   time: Time;

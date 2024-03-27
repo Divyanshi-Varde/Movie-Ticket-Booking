@@ -1,0 +1,192 @@
+.seatpage-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 20px 40px;
+}
+.seatpage-h-h {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 0px;
+}
+
+.seatpage-h-p {
+  color: rgba(90, 99, 122, 1);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 0px;
+}
+
+.seat-page {
+  margin: 20px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-screen {
+  margin: 40px;
+  width: 1000px;
+  height: 45px;
+  border-radius: 30px;
+  background: hsl(203, 87%, 83%);
+  border: 20px solid hsl(240, 100%, 98.6%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-right: 20px; */
+}
+
+.seat-map {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.seat-row {
+  display: flex;
+  gap: 10px;
+}
+
+.seat {
+  width: 40px;
+  height: 36px;
+  padding: 5px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.selected {
+  background: rgba(56, 55, 130, 1);
+  color: white;
+}
+
+.seatpage-layout-text {
+  margin-top: 50px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background: rgba(17, 142, 234, 1);
+}
+
+.seatpage-layout-text > h2 {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(218, 223, 232, 1);
+}
+
+.totalprice-button-section {
+  display: flex;
+  justify-content: space-around;
+  max-width: auto;
+  height: 400px;
+  align-items: center;
+}
+
+.totalprice-sets {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+.total > h4 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(90, 99, 122, 1);
+}
+
+.totalprice > h2 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.button-book {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.but {
+  height: 50px;
+  width: 200px;
+  border: 3px solid rgba(90, 99, 122, 1);
+  border-radius: 5.07px;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  padding: 12px, 8px, 12px, 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.but:hover {
+  transform: scale(1.1);
+}
+
+.but-1 {
+  color: linear-gradient(0deg, #5a637a, #5a637a),
+    linear-gradient(0deg, #ffffff, #ffffff);
+}
+
+.but-2 {
+  color: rgba(255, 190, 0, 1);
+  background-color: rgba(26, 44, 80, 1);
+}
+
+.selecttime {
+  position: relative;
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
+
+.selectt {
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 2px 5px;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.selectt:focus {
+  outline: none;
+}
+
+.selectt option {
+  padding: 5px;
+}
+.selectt option:hover {
+  background-color: black;
+}

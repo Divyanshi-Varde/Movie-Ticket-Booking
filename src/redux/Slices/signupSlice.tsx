@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface signupState {
+interface signupState {
   fname: string;
   phone: string;
   email: string;
@@ -16,7 +16,7 @@ const initialState: signupState = {
   signupState: false,
 };
 
-const signupSlice = createSlice({
+const SignupSlice = createSlice({
   name: "signup",
   initialState,
   reducers: {
@@ -32,7 +32,7 @@ const signupSlice = createSlice({
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
-    setsignup: (state, action: PayloadAction<boolean>) => {
+    setSignup: (state, action: PayloadAction<any>) => {
       state.signupState = action.payload;
     },
     setSignupclearn_value: (state) => {
@@ -49,7 +49,7 @@ export const {
   setPhone,
   setEmail,
   setPassword,
-  setsignup,
+  setSignup,
   setSignupclearn_value,
-} = signupSlice.actions;
-export default signupSlice.reducer;
+} = SignupSlice.actions;
+export default SignupSlice.reducer;

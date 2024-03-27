@@ -1,36 +1,37 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/Stores/store";
 import { FaArrowLeft } from "react-icons/fa6";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { loginSchema } from "../../schema/loginSchema";
+import { useDispatch } from "react-redux";
+import { setLoginState } from "../../redux/Slices/loginSlice";
 import "./LoginPage.css";
 
-interface LoginPageProps {
-  isLoggedIn: boolean;
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
+const LoginPage: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const initialValues = {
     phone: "",
     password: "",
   };
 
-  const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
-    initialValues: initialValues,
-    validationSchema: loginSchema,
-    onSubmit: (values, action) => {
-      console.log(values);
-      action.resetForm();
-      setIsLoggedIn(true);
-      toast.success("Logged In Successfully!");
-      navigate("/");
-      console.log("in the onsubmit");
-    },
-  });
+  const { phone, password } = useSelector((state: RootState) => state.login);
+
+  const { errors, values, handleChange, handleBlur, handleSubmit, touched } =
+    useFormik({
+      initialValues: initialValues,
+      validationSchema: loginSchema,
+      onSubmit: (values, action) => {
+        console.log(values);
+        dispatch(setLoginState(values));
+        toast.success("Logged In Successfully!");
+        navigate("/");
+      },
+    });
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -72,7 +73,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                 placeholder="+91 | Enter Mobile Number"
                 autoComplete="off"
               />
-              <p className="form-error">{errors.phone}</p>
+              <p className="form-error">{touched.phone && errors.phone}</p>
             </div>
 
             <div className="password_field">

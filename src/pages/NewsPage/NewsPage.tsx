@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/footer";
-// import articles, { Article } from "./spotlightData";
 import news, { NewsItem } from "./newsData";
 import { CiSearch } from "react-icons/ci";
 import "./NewsPage.css";
 import { useNavigate } from "react-router-dom";
 
-interface NewsPageProps {
-  isLoggedIn: boolean;
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const NewsPage: React.FC<NewsPageProps> = ({ isLoggedIn, setIsLoggedIn }) => {
+
+const NewsPage: React.FC = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div>
       <div>
-        <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+        <Navbar />
       </div>
 
       <div className="newsPage">

@@ -12,6 +12,7 @@
   margin: 2px 0px 2px 40px;
 }
 .right-con {
+  /* background-color: black; */
   gap: 15px;
   width: 40%;
   display: flex;
@@ -343,7 +344,8 @@
   padding: 2px;
 }
 .XXI {
-  background-color: linear-gradient(to right, #f2c46f 0%, #c6943f 100%);
+  /* background-color: linear-gradient(to right, #f2c46f 0%, #c6943f 100%); */
+  background-color: black;
   color: white;
   border-radius: 5px;
   padding: 2px;
